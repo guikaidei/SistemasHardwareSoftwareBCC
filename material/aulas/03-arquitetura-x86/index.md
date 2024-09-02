@@ -20,11 +20,19 @@ $ gcc -Og -g -Wall -std=c99 funcoes.c -o funcoes
 !!! exercise text long
     Abra o executável com o *gdb* e liste suas funções e suas variáveis globais. **Não rode o programa ainda!** Anote abaixo seus endereços e nomes.
 
+    Variáveis: int times_called
+    Funções: int funcao1(int, int *); int funcao2(int); int main(int, char **);
+
+
 !!! exercise text long
     O comando `disas` é usado para mostrar as instruções de máquina de uma função. Use-o para ver o código de máquina da função `funcao1`. Liste abaixo quais registradores foram usados nesta função e qual o tamanho dos dados guardados neles.
 
+    %edi: 32 bits, %eax: 32 bits e %rsi: 64 bits
+
 !!! exercise text long
     Com base nos tamanhos identificados, você consegue associar os registradores acima com as variáveis no código de `funcao1`?
+
+    rsi: b, eax: c e edi: a 
 
 !!! exercise text short
     Use o comando `break funcao1` para parar a execução do programa quando a função `funcao1` começar a executar. Execute o programa usando `run`. O quê ocorre?
@@ -36,7 +44,9 @@ Após executar o `run`, utilize `disas funcao1` e observe no código da função
     Os comandos `info breakpoints`, `info b` ou ainda `i b` podem ser utilizados para listar os breakpoints inseridos no código!
 
 !!! exercise text long
-    Podemos usar o comando `info registers edi` para ver o conteúdo atual do registrador `%edi`. Qual é este valor? Verifique quais argumentos são passados para `funcao1` no código *C* e, com estas informações em mãos, verifique sua resposta do Exercício 2 e escreva abaixo suas novas conclusões.
+    Podemos usar o comando `info registers edi` para ver o conteúdo atual do registrador `%edi`. Qual é este valor? Verifique quais argumentos são passados para `funcao1` no código *C* e, com estas informações em mãos, verifique sua resposta do Exercício 2 e escreva abaixo suas novas conclusões. 
+    
+    O valor 10 esta no registrador edi
 
 !!! exercise text short
     O comando `stepi` executa exatamente uma instrução de máquina. Use-o uma vez e execute novamente `disas funcao1`. O que aconteceu? É possível saber em qual instrução o programa está parado?
